@@ -21,6 +21,7 @@ class MenuServiceProvider extends ServiceProvider {
 		$this->package('kkstudio/menu');
 
 		\Route::get('admin/menu', '\Kkstudio\Menu\Controllers\MenuController@admin');
+		\Route::post('admin/menu/create', '\Kkstudio\Menu\Controllers\MenuController@postAdd');
 	}
 
 	/**
