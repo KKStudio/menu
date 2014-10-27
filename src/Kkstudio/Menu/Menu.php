@@ -21,7 +21,7 @@ class Menu extends \App\Module {
 	public function __call($func, $args) 
 	{
 		if(isset($this->data[$func])) {
-			return $this->data[$func]
+			return $this->data[$func];
 		}
 
 		return null;
