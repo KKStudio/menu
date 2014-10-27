@@ -10,7 +10,7 @@ class MenuController extends Controller {
 	{		
 		$menu = $repo->all();
 
-		return \View::make('menu::admin')->with('menu', $repo);
+		return \View::make('menu::admin')->with('menu', $menu);
 	}
 
 	public function postAdd(MenuRepository $repo) 
