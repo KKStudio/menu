@@ -16,7 +16,7 @@ class MenuRepository {
 		$max = Model::orderBy('lp', 'desc')->first();
 		if($max) $lp = $max->lp;
 
-		return lp;
+		return $lp;
 
 	}	
 
