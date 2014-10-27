@@ -1,0 +1,24 @@
+{
+    "name": "kkstudio/menu",
+    "description": "",
+    "authors": [
+        {
+            "name": "kkstudio",
+            "email": "krzysztofbaczkiewicz@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": ">=4.2"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations",
+            "src/controllers"
+        ],
+        "psr-0": {
+            "Kkstudio\\Menu\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
