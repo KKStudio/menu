@@ -20,10 +20,11 @@ class MenuRepository {
 
 	}	
 
-	public function create($route, $params, $slug, $lp) 
+	public function create($display_name, $route, $params, $slug, $lp) 
 	{
 		return Model::create([
 
+			'display_name' => $display_name,
 			'route' => $route,
 			'params' => $params,
 			'slug' => $slug,

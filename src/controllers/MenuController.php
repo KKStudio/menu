@@ -25,7 +25,7 @@ class MenuController extends Controller {
 		$params = \Request::get('params');
 
 		$lp = $repo->max() + 1;
-		$repo->create($route, $params, $slug, $lp);
+		$repo->create($display_name, $route, $params, $slug, $lp);
 
 		\Flash::success('Menu item has been created.');
 
