@@ -9,7 +9,7 @@ class Menu extends \App\Module {
 	public function __construct() 
 	{
 		$this->repo = new Repositories\MenuRepository;
-		$this->menu = $this->repo->all();
+		$this->menu = $this->prepareUrl($this->repo->all());
 		$this->data = $this->intoArray($this->menu);
 	}
 
@@ -27,7 +27,8 @@ class Menu extends \App\Module {
 		return null;
 	}
 
-	private function intoArray($data) {
+	private function intoArray($data) 
+	{
 
 		$table = [];
 
@@ -39,6 +40,26 @@ class Menu extends \App\Module {
 
 		return $table;
 
+	}
+
+	private function prepareUrl($menu)
+	{
+		foreach($menu as $key => $item) {
+
+			$url = $item->route;
+			$params = json_decode($item->params, true);
+
+			foreach($params as $key => $value) {
+
+				$url = str_replace('{$'. $key . '}', $value);
+
+			}
+
+			$menu[$key]->url = $url;
+
+		}
+
+		return $menu;
 	}
 
 }
