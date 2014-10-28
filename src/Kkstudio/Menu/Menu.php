@@ -49,9 +49,9 @@ class Menu extends \App\Module {
 			$url = $item->route;
 			$params = json_decode($item->params, true);
 
-			foreach($params as $key => $value) {
+			foreach($params as $param => $value) {
 
-				$url = str_replace('{$'. $key . '}', $value, $url);
+				$url = str_replace('{$'. $param . '}', $value, $url);
 
 			}
 
