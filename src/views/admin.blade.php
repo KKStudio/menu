@@ -2,6 +2,8 @@
 
 @section('content')
 
+	<h3 class="pull-left">Menus</h3>
+
 	<div class=""> 
 
 		<div class="clearfix"></div>

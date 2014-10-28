@@ -2,6 +2,8 @@
 
 @section('content')
 
+	<h3 class="pull-left">Delete menu item</h3>
+
 	<div class=""> 
 
 		{!! Form::open([ 'url' => 'admin/menu/' . $menu->id . '/delete']) !!}
