@@ -51,7 +51,7 @@ class Menu extends \App\Module {
 
 			foreach($params as $key => $value) {
 
-				$url = str_replace('{$'. $key . '}', $value);
+				$url = str_replace('{$'. $key . '}', $value, $url);
 
 			}
 
