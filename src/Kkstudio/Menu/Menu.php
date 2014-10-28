@@ -18,15 +18,6 @@ class Menu extends \App\Module {
 		return $this->menu;		
 	}
 
-	public function __call($func, $args) 
-	{
-		if(isset($this->data[$func])) {
-			return $this->data[$func];
-		}
-
-		return null;
-	}
-
 	private function intoArray($data) 
 	{
 
@@ -34,7 +25,7 @@ class Menu extends \App\Module {
 
 		foreach($data as $item) {
 
-			$table[$item->slug] = $item;
+			$table[$item->id] = $item;
 
 		}
 
