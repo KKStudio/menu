@@ -9,6 +9,11 @@ class MenuRepository {
 		return Model::where('enabled', 1)->orderBy('lp', 'asc')->get();
 	}
 
+	public function get($id) 
+	{
+		return Model::findOrFail($id);
+	}
+
 	public function max() {
 
 		$lp = 0;
