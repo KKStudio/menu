@@ -23,8 +23,12 @@
 					<td>{{ $m->display_name }}</td>
 					<td>{{ $m->route }}</td>
 					<td>{{ $m->params }}</td>
-					<td></td>
-					<td></td>
+					<td>
+						<a href="{{ url('admin/menu/' . $menu->id . '/edit') }}" class="btn btn-sm btn-primary">edit</a>
+					</td>
+					<td>
+						<a href="{{ url('admin/menu/' . $menu->id . '/delete') }}" class="btn btn-sm btn-danger">delete</a>
+					</td>
 				</tr>
 				@endforeach
 			</tbody>

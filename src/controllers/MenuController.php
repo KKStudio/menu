@@ -33,4 +33,64 @@ class MenuController extends Controller {
 
 	}
 
+	public function edit($id, MenuRepository $menu) 
+	{
+		$item = $menu->get($id);
+
+		return \View::make('menu::edit')->with('menu', $item);
+	}
+
+	public function postEdit($id, MenuRepository $menu) 
+	{
+		$item = $menu->get($id);
+
+		if(! \Request::get('display_name')) {
+
+			\Flash::error('Please provide a name.');
+
+			return \Redirect::back()->withInput();
+
+		}
+
+		if(! \Request::get('route')) {
+
+			\Flash::error('Please provide a route.');
+
+			return \Redirect::back()->withInput();
+
+		}
+
+		$display_name = \Request::get('display_name');
+		$route = \Request::get('route');
+		$params = \Request::get('params');
+
+		$item->display_name = $display_name;
+		$item->route = $route;
+		$item->params = $params;	
+
+		$item->save();	
+
+		\Flash::success('Menu item edited successfully.');
+
+		return \Redirect::back();
+
+	}
+
+	public function delete($id, MenuRepository $menu) 
+	{
+		$item = $menu->get($id);
+
+		return \View::make('menu::delete')->with('menu', $item);
+	}
+
+	public function postDelete($id, MenuRepository $menu) 
+	{
+		$item = $menu->get($id);
+		$item->delete();
+
+		\Flash::success('Menu item deleted.');
+
+		return \Redirect::to('admin/menu/');
+	}
+
 }
