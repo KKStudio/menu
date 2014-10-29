@@ -34,7 +34,7 @@
 						<a href="{{ url('admin/menu/' . $m->id . '/delete') }}" class="btn btn-sm btn-danger">delete</a>
 					</td>
 					<td>
-						@if($k-1 > 0)
+						@if($k-1 >= 0)
 						{!! Form::open(['url' => 'admin/menu/swap']) !!}
 
 							{!! Form::hidden('id1', $menu[$k-1]->id) !!}
