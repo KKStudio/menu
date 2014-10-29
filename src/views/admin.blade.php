@@ -11,7 +11,7 @@
 
 		<table class="table table-striped">
 			<thead>
-				<th>lp</th>
+				<th>#</th>
 				<th>Display name</th>
 				<th>Route</th>
 				<th>Params</th>

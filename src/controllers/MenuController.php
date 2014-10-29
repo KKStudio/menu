@@ -29,7 +29,7 @@ class MenuController extends Controller {
 
 		\Flash::success('Menu item has been created.');
 
-		return \Redirect::back();
+		return \Redirect::to('admin/menu');
 
 	}
 
