@@ -6,7 +6,7 @@ class MenuRepository {
 
 	public function all() 
 	{
-		return Model::where('enabled', 1)->orderBy('lp', 'asc')->get();
+		return Model::where('enabled', 1)->orderBy('position', 'asc')->get();
 	}
 
 	public function get($id) 
