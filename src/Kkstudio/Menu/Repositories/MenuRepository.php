@@ -16,16 +16,16 @@ class MenuRepository {
 
 	public function max() {
 
-		$lp = 0;
+		$position = 0;
 
-		$max = Model::orderBy('lp', 'desc')->first();
-		if($max) $lp = $max->lp;
+		$max = Model::orderBy('position', 'desc')->first();
+		if($max) $position = $max->position;
 
-		return $lp;
+		return $position;
 
 	}	
 
-	public function create($display_name, $route, $params, $slug, $lp) 
+	public function create($display_name, $route, $params, $slug, $position) 
 	{
 		return Model::create([
 
@@ -33,7 +33,7 @@ class MenuRepository {
 			'route' => $route,
 			'params' => $params,
 			'slug' => $slug,
-			'lp' => $lp,
+			'position' => $position,
 			'enabled' => 1
 
 		]);

@@ -17,11 +17,13 @@
 				<th>Params</th>
 				<th></th>
 				<th></th>
+				<th>up</th>
+				<th>down</th>
 			</thead>
 			<tbody>
-				@foreach($menu as $m)
+				@foreach($menu as $k => $m)
 				<tr>
-					<td>{{ $m->lp }}</td>
+					<td>{{ $m->id }}</td>
 					<td>{{ $m->display_name }}</td>
 					<td>{{ $m->route }}</td>
 					<td>{{ $m->params }}</td>
@@ -30,6 +32,31 @@
 					</td>
 					<td>
 						<a href="{{ url('admin/menu/' . $m->id . '/delete') }}" class="btn btn-sm btn-danger">delete</a>
+					</td>
+					<td>
+						@if($k-1 > 0)
+						{!! Form::open(['url' => 'admin/menu/swap']) !!}
+
+							{!! Form::hidden('id1', $menu[$k-1]->id) !!}
+							{!! Form::hidden('id2', $m->id) !!}
+
+							{!! Form::submit('move up', [ 'class' => 'btn-sm btn btn-success']) !!}
+
+						{!! Form::close() !!}
+						@endif
+					</td>
+					<td>
+						@if($k+1 < count($menu))
+						{!! Form::open(['url' => 'admin/menu/swap']) !!}
+
+							{!! Form::hidden('id1', $m->id) !!}
+							{!! Form::hidden('id2', $menu[$k+1]->id) !!}
+
+							{!! Form::submit('move down', [ 'class' => 'btn-sm btn btn-success']) !!}
+
+						{!! Form::close() !!}
+						@endif
+
 					</td>
 				</tr>
 				@endforeach

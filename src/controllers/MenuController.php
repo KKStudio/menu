@@ -93,4 +93,20 @@ class MenuController extends Controller {
 		return \Redirect::to('admin/menu/');
 	}
 
+	public function swap(MenuRepository $menu) {
+
+		$id1 = \Request::get('id1');
+		$id2 = \Request::get('id2');
+
+		$first = $menu->get($id1);
+		$second = $menu->get($id2);
+
+		$first->moveAfter($second);
+
+		\Flash::success('Sorted.');
+
+		return \Redirect::back();
+
+	}
+
 }

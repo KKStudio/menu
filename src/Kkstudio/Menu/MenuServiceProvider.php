@@ -30,6 +30,8 @@ class MenuServiceProvider extends ServiceProvider {
 
 			\Route::get('admin/menu/{id}/delete', '\Kkstudio\Menu\Controllers\MenuController@delete');
 			\Route::post('admin/menu/{id}/delete', '\Kkstudio\Menu\Controllers\MenuController@postDelete');
+			
+			\Route::post('admin/menu/swap', '\Kkstudio\Menu\Controllers\MenuController@swap');
 
 		});
 		
