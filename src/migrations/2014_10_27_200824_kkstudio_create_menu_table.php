@@ -19,9 +19,9 @@ class KkstudioCreateMenuTable extends Migration {
 			$table->integer('position');
 			$table->string('display_name');
 			$table->string('slug')->nullable();
-			$table->string('route');
-			$table->string('params');
-			$table->timestamps();
+			$table->string('route')->nullable();
+			$table->string('params')->nullable();
+			$table->nullableTimestamps();
 
 		});
 	}
