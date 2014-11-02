@@ -2,17 +2,17 @@
 
 @section('content')
 
-	<h3 class="pull-left">Delete menu item</h3>
+	<h3 class="pull-left">Usuń wpis z menu</h3>
 
 	<div class=""> 
 
 		{!! Form::open([ 'url' => 'admin/menu/' . $menu->id . '/delete']) !!}
 
-			{!! Form::submit('Delete menu item', [ 'class' => 'btn btn-lg btn-danger pull-right']) !!}
+			{!! Form::submit('Potwierdź usunięcie', [ 'class' => 'btn btn-lg btn-danger pull-right']) !!}
 
 			<div class="clearfix"></div>
 
-			<p>Confirm deleting menu item <b>{{ $menu->display_name }}</b> by clicking the button above.</p>
+			<p>Potwierdź usunięcie wpisu z menu <b>{{ $menu->display_name }}</b> klikając przycisk powyżej.</p>
 
 		{!! Form::close() !!}
 

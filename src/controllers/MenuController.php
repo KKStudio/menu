@@ -27,7 +27,7 @@ class MenuController extends Controller {
 		$lp = $repo->max() + 1;
 		$repo->create($display_name, $route, $params, $slug, $lp);
 
-		\Flash::success('Menu item has been created.');
+		\Flash::success('Wpis w menu został utworzony.');
 
 		return \Redirect::to('admin/menu');
 
@@ -46,7 +46,7 @@ class MenuController extends Controller {
 
 		if(! \Request::get('display_name')) {
 
-			\Flash::error('Please provide a name.');
+			\Flash::error('Musisz podać nazwę.');
 
 			return \Redirect::back()->withInput();
 
@@ -54,7 +54,7 @@ class MenuController extends Controller {
 
 		if(! \Request::get('route')) {
 
-			\Flash::error('Please provide a route.');
+			\Flash::error('Musisz podać ścieżkę');
 
 			return \Redirect::back()->withInput();
 
@@ -70,7 +70,7 @@ class MenuController extends Controller {
 
 		$item->save();	
 
-		\Flash::success('Menu item edited successfully.');
+		\Flash::success('Wpis z menu edytowany pomyślnie.');
 
 		return \Redirect::back();
 
@@ -88,7 +88,7 @@ class MenuController extends Controller {
 		$item = $menu->get($id);
 		$item->delete();
 
-		\Flash::success('Menu item deleted.');
+		\Flash::success('Wpis z menu usunięty.');
 
 		return \Redirect::to('admin/menu/');
 	}
@@ -103,7 +103,7 @@ class MenuController extends Controller {
 
 		$first->moveAfter($second);
 
-		\Flash::success('Sorted.');
+		\Flash::success('Posortowano.');
 
 		return \Redirect::back();
 
