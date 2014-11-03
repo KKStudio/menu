@@ -20,7 +20,7 @@ class MenuServiceProvider extends ServiceProvider {
 	{
 		$this->package('kkstudio/menu');
 
-		\Route::group([ 'prefix' => 'admin', 'middleware' => 'admin'], function() {
+		\Route::group([ 'prefix' => 'admin', 'before' => 'admin'], function() {
 
 			\Route::get('menu', '\Kkstudio\Menu\Controllers\MenuController@admin');
 			\Route::post('menu/create', '\Kkstudio\Menu\Controllers\MenuController@postAdd');
