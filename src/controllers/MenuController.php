@@ -5,15 +5,22 @@ use Kkstudio\Menu\Models\Menu;
 use Kkstudio\Menu\Repositories\MenuRepository;
 
 class MenuController extends Controller {
+
+	protected $repo;
+
+	public function __construct(MenuRepository $repo)
+	{
+		$this->repo = $repo;
+	}
 	
-	public function admin(MenuRepository $repo)
+	public function admin()
 	{		
-		$menu = $repo->all();
+		$menu = $this->repo->all();
 
 		return \View::make('menu::admin')->with('menu', $menu);
 	}
 
-	public function postAdd(MenuRepository $repo) 
+	public function postAdd() 
 	{
 
 		$enabled = 1;
@@ -24,8 +31,8 @@ class MenuController extends Controller {
 		$route = \Request::get('route');
 		$params = \Request::get('params');
 
-		$lp = $repo->max() + 1;
-		$repo->create($display_name, $route, $params, $slug, $lp);
+		$lp = $this->repo->max() + 1;
+		$this->repo->create($display_name, $route, $params, $slug, $lp);
 
 		\Flash::success('Wpis w menu został utworzony.');
 
@@ -33,16 +40,16 @@ class MenuController extends Controller {
 
 	}
 
-	public function edit($id, MenuRepository $menu) 
+	public function edit($id) 
 	{
 		$item = $menu->get($id);
 
 		return \View::make('menu::edit')->with('menu', $item);
 	}
 
-	public function postEdit($id, MenuRepository $menu) 
+	public function postEdit($id) 
 	{
-		$item = $menu->get($id);
+		$item = $this->repo->get($id);
 
 		if(! \Request::get('display_name')) {
 
@@ -76,16 +83,16 @@ class MenuController extends Controller {
 
 	}
 
-	public function delete($id, MenuRepository $menu) 
+	public function delete($id) 
 	{
-		$item = $menu->get($id);
+		$item = $this->repo->get($id);
 
 		return \View::make('menu::delete')->with('menu', $item);
 	}
 
-	public function postDelete($id, MenuRepository $menu) 
+	public function postDelete($id) 
 	{
-		$item = $menu->get($id);
+		$item = $this->repo->get($id);
 		$item->delete();
 
 		\Flash::success('Wpis z menu usunięty.');
@@ -93,13 +100,13 @@ class MenuController extends Controller {
 		return \Redirect::to('admin/menu/');
 	}
 
-	public function swap(MenuRepository $menu) {
+	public function swap() {
 
 		$id1 = \Request::get('id1');
 		$id2 = \Request::get('id2');
 
-		$first = $menu->get($id1);
-		$second = $menu->get($id2);
+		$first = $this->repo->get($id1);
+		$second = $this->repo->get($id2);
 
 		$first->moveAfter($second);
 
