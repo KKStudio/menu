@@ -42,7 +42,7 @@ class MenuController extends Controller {
 
 	public function edit($id) 
 	{
-		$item = $menu->get($id);
+		$item = $this->repo->get($id);
 
 		return \View::make('menu::edit')->with('menu', $item);
 	}
